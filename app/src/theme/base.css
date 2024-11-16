@@ -3,7 +3,10 @@
   --ion-primary: #182e67;
   --ion-secondary: #eba95d;
   --ion-primary-text: #545164;
+  --ion-item-background: transparent;
 
+  --ion-item-color: var(--ion-primary-text);
+  --ion-text-color: var(--ion-primary-text);
   --vt-c-white: #ffffff;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
@@ -35,7 +38,7 @@
   --color-border-hover: var(--vt-c-divider-light-1);
 
   --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  --color-text: var(--ion-primary-text);
 
   /* --section-gap: 160px; */
 }
@@ -65,6 +68,7 @@
 body {
   min-height: 100vh;
   min-width: 100vw;
+  overflow-x: hidden;
   color: var(--color-text);
   background: var(--color-background);
   transition:
@@ -84,7 +88,7 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
+  font-size: 13px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

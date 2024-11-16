@@ -10,17 +10,37 @@
   padding: 10px;
 }
 
+.ion-margin {
+  margin: 10px;
+}
+
 a {
   font-size: medium;
   text-decoration: none;
   color: var(--ion-primary-text);
 }
 
+body {
+  color: var(--ion-primary-text);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--ion-primary-text);
+  font-weight: bold;
+}
+
 h4 {
   font-size: large;
   margin-bottom: 5px;
-  font-weight: bold;
-  color: var(--ion-primary);
+}
+
+h3 {
+  font-size: 17px;
 }
 
 @media (hover: hover) {
@@ -30,10 +50,6 @@ h4 {
 }
 
 @media (min-width: 1024px) {
-  body {
-    color: #000;
-  }
-
   #app {
     display: grid;
     min-width: 100%;

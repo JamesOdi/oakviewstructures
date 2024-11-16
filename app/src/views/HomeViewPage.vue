@@ -6,5 +6,10 @@ onMounted(() => {})
 </script>
 
 <template>
-  <default-page> </default-page>
+  <default-page>
+    <div style="height: 1024px">
+      <h1>Welcome to Vue.js</h1>
+      <p>This is the default layout for your Vue.js application.</p>
+    </div>
+  </default-page>
 </template>
