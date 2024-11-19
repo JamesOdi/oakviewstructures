@@ -15,6 +15,7 @@ import {
   IonPage,
   IonMenu,
   IonItem,
+  IonContent,
 } from '@ionic/vue'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
@@ -27,22 +28,13 @@ import {
   menuOutline,
 } from 'ionicons/icons'
 import HyperLinkText from '@/components/HyperLinkText.vue'
+import type { ContactInfoLink, HeaderLink } from '@/utils/types-interfaces'
+import MainMenu from '@/components/MainMenu.vue'
+import MainToolbar from '@/components/MainToolbar.vue'
 
 const router = useRouter()
 
-const currentRoute = computed(() => router.currentRoute.value.name)
-
-type HeaderLink = {
-  title: string
-  name: string
-}
-
-type ContactInfoLink = {
-  icon: string
-  label: string
-  title: string
-  href?: string
-}
+const currentRoute = computed(() => router.currentRoute.value.name?.toString() || '')
 
 const contactInfoLinks: ContactInfoLink[] = [
   {
@@ -85,81 +77,20 @@ const headerLinks: HeaderLink[] = [
 </script>
 
 <template>
-  <ion-menu side="end" content-id="main-content">
-    <ion-row>
-      <ion-col>
-        <ion-row>
-          <ion-col>
-            <ion-item v-for="link of headerLinks">
-              <hyper-link-text :route="link.name" :label="link.title"></hyper-link-text>
-            </ion-item>
-          </ion-col>
-        </ion-row>
+  <main-menu :header-links="headerLinks" :contact-info-links="contactInfoLinks"></main-menu>
+  <ion-page id="main-content" style="width: 100%; overflow-x: hidden">
+    <main-toolbar :header-links="headerLinks" :current-route="currentRoute"></main-toolbar>
 
-        <ion-row v-for="contactInfo of contactInfoLinks">
-          <ion-col>
-            <ion-item lines="none">
-              <ion-icon
-                :icon="contactInfo.icon"
-                slot="start"
-                style="color: var(--ion-secondary)"
-              ></ion-icon>
-              <ion-grid style="padding-left: 15px">
-                <ion-row style="padding: 0">
-                  <ion-col style="padding: 0">
-                    <h3>{{ contactInfo.title }}</h3>
-                  </ion-col>
-                </ion-row>
-                <ion-row style="padding: 0">
-                  <ion-col style="padding: 0">
-                    <a :href="contactInfo.href">{{ contactInfo.label }}</a>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-item>
-          </ion-col>
-        </ion-row>
-      </ion-col>
-    </ion-row>
-  </ion-menu>
-  <ion-page id="main-content">
-    <ion-header>
-      <ion-toolbar>
-        <div style="display: flex; justify-content: center">
-          <ion-row class="toolbar-main">
-            <ion-col>
-              <img src="/assets/oakview_logo.png" alt="Oakview" style="width: 70px; height: 70px" />
-            </ion-col>
-
-            <ion-col
-              v-for="(headerLink, idx) of headerLinks"
-              :key="idx"
-              size="auto"
-              style="padding: 10px"
-              class="toolbar-link"
-            >
-              <hyper-link-text
-                :route="headerLink.name"
-                :active="currentRoute === headerLink.name"
-                :label="headerLink.title"
-              ></hyper-link-text>
-            </ion-col>
-
-            <ion-menu-button class="menu-toggle">
-              <ion-icon :icon="menuOutline"></ion-icon>
-            </ion-menu-button>
-          </ion-row>
-        </div>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-grid>
-      <ion-row>
-        <ion-col>
+    <ion-grid style="padding: 0px; margin-top: 70px">
+      <ion-row style="padding: 0px">
+        <ion-col style="padding: 0px">
           <slot></slot>
         </ion-col>
       </ion-row>
     </ion-grid>
+
+    <!-- Bottom padding -->
+    <div style="padding-bottom: 200px"></div>
 
     <ion-footer style="display: flex; flex-direction: column; align-items: center">
       <ion-row style="display: flex; max-width: 1024px">
