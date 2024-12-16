@@ -1,13 +1,14 @@
 /* color palette from <https://github.com/vuejs/theme> */
 :root {
-  --ion-primary: #182e67;
-  --ion-secondary: #eba95d;
-  --ion-primary-text: #545164;
+  --ion-color-primary: #182e67;
+  --ion-color-secondary: #eca764;
+  --ion-color-primary-text: #545164;
   --ion-item-background: transparent;
+  --ion-color-secondary-light: #eca86458;
 
-  --ion-item-color: var(--ion-primary-text);
-  --ion-text-color: var(--ion-primary-text);
-  --vt-c-white: #ffffff;
+  --ion-item-color: var(--ion-color-primary-text);
+  --ion-text-color: var(--ion-color-primary-text);
+  --vt-c-white: #f7f7f7;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
 
@@ -38,7 +39,7 @@
   --color-border-hover: var(--vt-c-divider-light-1);
 
   --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--ion-primary-text);
+  --color-text: var(--ion-color-primary-text);
 
   /* --section-gap: 160px; */
 }
@@ -65,11 +66,94 @@
   font-weight: normal;
 }
 
+a {
+  font-size: medium;
+  text-decoration: none;
+  color: var(--ion-color-primary-text);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+}
+
+.ion-padding {
+  padding: 10px;
+}
+
+.ion-padding-top {
+  padding-top: 10px;
+}
+
+.ion-margin {
+  margin: 10px;
+}
+
+.ion-margin-top {
+  margin-top: 10px;
+}
+
+.ion-margin-right {
+  margin-right: 10px;
+}
+
+.ion-padding-left {
+  padding-left: 1rem;
+}
+
+.ion-padding-right {
+  padding-right: 10px;
+}
+
+ion-item {
+  padding: 0px;
+  margin: 0px;
+}
+
+ion-row,
+ion-item {
+  width: 100%;
+}
+
+ion-icon {
+  padding-right: 10px;
+}
+
+ion-label {
+  ion-icon {
+    margin-bottom: -3px;
+  }
+}
+
 body {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
-  color: var(--color-text);
+  color: var(--ion-color-primary-text);
   background: var(--color-background);
   transition:
     color 0.5s,
@@ -92,4 +176,28 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: var(--ion-color-secondary);
+  }
+}
+
+@media (max-width: 1024px) {
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  h3 {
+    font-size: 1.4rem;
+  }
+  h4 {
+    font-size: 1.2rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
 }

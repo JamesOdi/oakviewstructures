@@ -1,22 +1,5 @@
 <script setup lang="ts">
-import {
-  IonHeader,
-  IonToolbar,
-  IonGrid,
-  IonRow,
-  IonCol,
-  IonFooter,
-  IonLabel,
-  IonText,
-  IonIcon,
-  IonMenuButton,
-  IonButtons,
-  IonTitle,
-  IonPage,
-  IonMenu,
-  IonItem,
-  IonContent,
-} from '@ionic/vue'
+import { IonGrid, IonRow, IonCol, IonFooter, IonLabel, IonText, IonPage } from '@ionic/vue'
 import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import {
@@ -25,7 +8,6 @@ import {
   ellipse,
   locationOutline,
   mailUnreadOutline,
-  menuOutline,
 } from 'ionicons/icons'
 import HyperLinkText from '@/components/HyperLinkText.vue'
 import type { ContactInfoLink, HeaderLink } from '@/utils/types-interfaces'
@@ -136,14 +118,14 @@ const headerLinks: HeaderLink[] = [
 
           <hyper-link-text
             v-for="routerLink of headerLinks"
-            :route="routerLink.name"
+            :route="{ name: routerLink.name }"
             :active="currentRoute === routerLink.name"
             :label="routerLink.title"
             :icon="chevronForwardOutline"
           ></hyper-link-text>
         </ion-col>
       </ion-row>
-      <ion-row style="background-color: var(--ion-primary); width: 100%">
+      <ion-row style="background-color: var(--ion-color-primary); width: 100%; min-height: 30px">
         <ion-col style="justify-items: center">
           <ion-row class="toolbar-main" style="display: flex">
             <ion-col>
@@ -153,7 +135,7 @@ const headerLinks: HeaderLink[] = [
             </ion-col>
             <ion-col v-for="routerLink of headerLinks" size="auto" class="toolbar-link">
               <hyper-link-text
-                :route="routerLink.name"
+                :route="{ name: routerLink.name }"
                 :label="routerLink.title"
                 :icon="ellipse"
                 color="white"
@@ -169,7 +151,7 @@ const headerLinks: HeaderLink[] = [
 
 <style scoped>
 .active {
-  color: var(--ion-secondary);
+  color: var(--ion-color-secondary);
   font-weight: bold;
   font-size: medium;
   text-decoration: none;
@@ -181,7 +163,7 @@ const headerLinks: HeaderLink[] = [
 }
 
 .footer-bottom {
-  background-color: var(--ion-primary);
+  background-color: var(--ion-color-primary);
   width: 100%;
   align-items: center;
 }

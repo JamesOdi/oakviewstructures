@@ -3,6 +3,7 @@ import type { HeaderLink } from '@/utils/types-interfaces'
 import { menuOutline } from 'ionicons/icons'
 import { IonCol, IonRow, IonMenuButton, IonIcon, IonToolbar, IonHeader } from '@ionic/vue'
 import HyperLinkText from './HyperLinkText.vue'
+import { RouterLink } from 'vue-router'
 
 defineProps<{
   headerLinks: HeaderLink[]
@@ -16,7 +17,9 @@ defineProps<{
       <div style="display: flex; justify-content: center">
         <ion-row class="toolbar-main">
           <ion-col>
-            <img src="/assets/oakview_logo.png" alt="Oakview" style="width: 70px; height: 70px" />
+            <router-link :to="{ name: 'home' }">
+              <img src="/assets/oakview_logo.png" alt="Oakview" style="width: 70px; height: 70px" />
+            </router-link>
           </ion-col>
 
           <ion-col
@@ -27,7 +30,7 @@ defineProps<{
             class="toolbar-link"
           >
             <hyper-link-text
-              :route="headerLink.name"
+              :route="{ name: headerLink.name }"
               :active="currentRoute === headerLink.name"
               :label="headerLink.title"
             ></hyper-link-text>

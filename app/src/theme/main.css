@@ -6,47 +6,14 @@
   overflow-y: auto;
 }
 
-.ion-padding {
-  padding: 10px;
+.center-children {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.ion-margin {
-  margin: 10px;
-}
-
-a {
-  font-size: medium;
-  text-decoration: none;
-  color: var(--ion-primary-text);
-}
-
-body {
-  color: var(--ion-primary-text);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--ion-primary-text);
-  font-weight: bold;
-}
-
-h4 {
-  font-size: large;
-  margin-bottom: 5px;
-}
-
-h3 {
-  font-size: 17px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    color: var(--ion-secondary);
-  }
+.cursor-pointer {
+  cursor: pointer;
 }
 
 @media (min-width: 1024px) {

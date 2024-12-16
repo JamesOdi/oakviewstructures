@@ -21,18 +21,15 @@ defineProps<{
           :icon="icon"
           slot="start"
           size="small"
-          :style="{ color: 'var(--ion-secondary)', width: size, height: size }"
+          color="secondary"
+          :style="{ width: size, height: size }"
         >
         </ion-icon>
 
-        <router-link
-          v-if="route"
-          :to="route"
-          :class="{ active, 'white-text': color == 'white' }"
-          :style="{ padding: '10px' }"
-          >{{ label }}</router-link
-        >
-        <ion-text v-else style="padding: 10px">
+        <router-link v-if="route" :to="route" :class="{ active, 'white-text': color == 'white' }">{{
+          label
+        }}</router-link>
+        <ion-text v-else>
           {{ label }}
         </ion-text>
       </ion-item>
@@ -42,7 +39,7 @@ defineProps<{
 
 <style scoped>
 .active {
-  color: var(--ion-secondary);
+  color: var(--ion-color-secondary);
   font-weight: bold;
   font-size: medium;
   text-decoration: none;
@@ -53,6 +50,6 @@ defineProps<{
 }
 
 .white-text:hover {
-  color: var(--ion-secondary);
+  color: var(--ion-color-secondary);
 }
 </style>
