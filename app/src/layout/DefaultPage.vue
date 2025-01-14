@@ -1,5 +1,15 @@
 <script setup lang="ts">
-import { IonGrid, IonRow, IonCol, IonFooter, IonLabel, IonText, IonPage } from '@ionic/vue';
+import {
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonFooter,
+  IonLabel,
+  IonText,
+  IonPage,
+  IonItem,
+  IonIcon,
+} from '@ionic/vue';
 import { useRouter } from 'vue-router';
 import { chevronForwardOutline, ellipse } from 'ionicons/icons';
 import HyperLinkText from '@/components/HyperLinkText.vue';
@@ -98,13 +108,27 @@ const router = useRouter();
               </ion-text>
             </ion-col>
             <ion-col v-for="{ name, title } of headerLinks" size="auto" class="toolbar-link">
-              <hyper-link-text
+              <ion-row>
+                <ion-col>
+                  <ion-item lines="none">
+                    <ion-icon
+                      :icon="ellipse"
+                      color="secondary"
+                      slot="start"
+                      style="width: 10px; height: 10px; margin-bottom: 0px"
+                    >
+                    </ion-icon>
+                    <router-link :to="{ name }" class="white-text">{{ title }}</router-link>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <!-- <hyper-link-text
                 :route="{ name }"
                 :label="title"
                 :icon="ellipse"
                 color="white"
                 size="10px"
-              ></hyper-link-text>
+              ></hyper-link-text> -->
             </ion-col>
           </ion-row>
         </ion-col>
@@ -136,6 +160,14 @@ const router = useRouter();
 
 .quick-link {
   padding-left: 50px;
+}
+
+.white-text {
+  color: white;
+}
+
+.white-text:hover {
+  color: var(--ion-color-secondary);
 }
 
 @media (max-width: 1024px) {

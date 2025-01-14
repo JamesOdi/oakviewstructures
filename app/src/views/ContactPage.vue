@@ -102,13 +102,14 @@ const sendEmail = () => {
                   lines="none"
                   :key="idx"
                   class="ion-margin-bottom"
-                  style="border-style: solid; border-radius: 5px"
+                  style="border-style: solid; border-radius: 5px; border-width: 2px"
                 >
                   <ion-input
                     label-placement="floating"
                     :name="contactFormInput.name"
                     :type="contactFormInput.inputType"
                     v-model="pageModel[contactFormInput.name]"
+                    disabled
                   >
                     <div slot="label">
                       {{ contactFormInput.label }}
@@ -117,12 +118,16 @@ const sendEmail = () => {
                   </ion-input>
                 </ion-item>
 
-                <ion-item lines="none" style="border-style: solid; border-radius: 5px">
+                <ion-item
+                  lines="none"
+                  style="border-style: solid; border-radius: 5px; border-width: 2px"
+                >
                   <ion-textarea
                     label-placement="floating"
                     name="message"
                     style="min-height: 100px"
                     v-model="pageModel.message"
+                    disabled
                   >
                     <div slot="label">
                       Message
@@ -131,7 +136,7 @@ const sendEmail = () => {
                   </ion-textarea>
                 </ion-item>
 
-                <ion-button class="ion-margin-top" expand="block" @click="sendEmail">
+                <ion-button class="ion-margin-top" expand="block" @click="sendEmail" disabled>
                   Submit
                 </ion-button>
               </ion-list>
