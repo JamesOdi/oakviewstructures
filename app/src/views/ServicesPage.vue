@@ -94,6 +94,14 @@ const serviceStore = useServiceStore();
             {{ reason }}
           </li>
         </ul>
+        <ion-row class="ion-margin-top">
+          <ion-col>
+            <ion-label style="font-weight: bold"
+              >Contact us today to discuss your next project and experience the Oak View
+              difference.</ion-label
+            >
+          </ion-col>
+        </ion-row>
       </my-section>
     </my-content>
   </default-page>
