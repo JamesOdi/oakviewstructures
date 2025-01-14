@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import type { ContactInfoLink, HeaderLink } from '@/utils/types-interfaces'
-import { IonRow, IonCol, IonItem, IonIcon, IonGrid } from '@ionic/vue'
+import { IonRow, IonCol, IonItem, IonIcon, IonLabel } from '@ionic/vue'
 import HyperLinkText from './HyperLinkText.vue'
+import { RouterLink, useRouter } from 'vue-router'
+
+const router = useRouter()
 
 defineProps<{
   headerLinks: HeaderLink[]
@@ -13,35 +16,38 @@ defineProps<{
   <ion-menu side="end" content-id="main-content">
     <ion-row>
       <ion-col>
-        <ion-row>
+        <ion-row class="ion-margin-bottom">
           <ion-col>
             <ion-item v-for="({ name, title }, idx) of headerLinks" :key="idx">
-              <hyper-link-text :route="{ name }" :label="title"></hyper-link-text>
+              <hyper-link-text
+                :route="{ name }"
+                :active="router.currentRoute.value.name == name"
+                :label="title"
+              ></hyper-link-text>
             </ion-item>
           </ion-col>
         </ion-row>
 
-        <ion-row v-for="{ icon, title, href, label } of contactInfoLinks">
+        <ion-row
+          v-for="({ icon, title, href, label }, idx) of contactInfoLinks"
+          :key="idx"
+          class="ion-padding-start"
+        >
           <ion-col>
-            <ion-item lines="none">
-              <ion-icon
-                :icon="icon"
-                slot="start"
-                style="color: var(--ion-color-secondary)"
-              ></ion-icon>
-              <ion-grid style="padding-left: 15px">
-                <ion-row style="padding: 0">
-                  <ion-col style="padding: 0">
-                    <h3>{{ title }}</h3>
-                  </ion-col>
-                </ion-row>
-                <ion-row style="padding: 0">
-                  <ion-col style="padding: 0">
-                    <a :href="href">{{ label }}</a>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-item>
+            <ion-row class="ion-align-items-center">
+              <ion-col size="1" class="ion-no-padding">
+                <ion-icon :icon="icon" color="secondary"></ion-icon>
+              </ion-col>
+              <ion-col class="ion-padding-start">
+                <h5>{{ title }}</h5>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col offset="1" class="ion-padding-start">
+                <a v-if="href" :href="href">{{ label }}</a>
+                <ion-label v-else>{{ label }}</ion-label>
+              </ion-col>
+            </ion-row>
           </ion-col>
         </ion-row>
       </ion-col>

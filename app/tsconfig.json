@@ -18,6 +18,10 @@
     "moduleResolution": "node",
     "types": ["node"],
     "jsx": "preserve",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "sourceMap": true,
     "strict": true

@@ -8,7 +8,6 @@ export default {
 import { IonRow, IonCol, IonIcon, IonLabel, IonItem } from '@ionic/vue'
 import type { PropType } from 'vue'
 import { flowerOutline } from 'ionicons/icons'
-import { inheritAttributes } from 'ionicons/dist/types/components/icon/utils'
 
 defineProps({
   titlePosition: {
@@ -35,15 +34,17 @@ defineProps({
 <template>
   <ion-row>
     <ion-col>
-      <ion-row style="display: flex; align-items: center">
+      <ion-row
+        :style="{ 'justify-content': titlePosition, display: 'flex', 'align-items': 'center' }"
+      >
         <ion-col size="auto">
-          <ion-icon :icon="icon" color="secondary" size="large"></ion-icon>
+          <ion-icon :icon="icon" color="secondary" size="small"></ion-icon>
         </ion-col>
-        <ion-col>
-          <ion-label style="font-size: large">{{ title }}</ion-label>
+        <ion-col size="auto">
+          <ion-label style="font-weight: 600">{{ title }}</ion-label>
         </ion-col>
       </ion-row>
-      <ion-row>
+      <ion-row v-if="subtitle">
         <ion-col>
           <h2>{{ subtitle }}</h2>
         </ion-col>

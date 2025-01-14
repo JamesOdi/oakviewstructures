@@ -1,67 +1,20 @@
 <script setup lang="ts">
 import { IonGrid, IonRow, IonCol, IonFooter, IonLabel, IonText, IonPage } from '@ionic/vue'
-import { computed } from 'vue'
 import { useRouter } from 'vue-router'
-import {
-  callOutline,
-  chevronForwardOutline,
-  ellipse,
-  locationOutline,
-  mailUnreadOutline,
-} from 'ionicons/icons'
+import { chevronForwardOutline, ellipse } from 'ionicons/icons'
 import HyperLinkText from '@/components/HyperLinkText.vue'
-import type { ContactInfoLink, HeaderLink } from '@/utils/types-interfaces'
+import type { HeaderLink } from '@/utils/types-interfaces'
 import MainMenu from '@/components/MainMenu.vue'
 import MainToolbar from '@/components/MainToolbar.vue'
+import { headerLinks, contactInfoLinks } from '@/utils/constants'
 
 const router = useRouter()
-
-const currentRoute = computed(() => router.currentRoute.value.name?.toString() || '')
-
-const contactInfoLinks: ContactInfoLink[] = [
-  {
-    icon: locationOutline,
-    title: 'Location',
-    label: '23 Abuja',
-  },
-  {
-    icon: callOutline,
-    title: 'Call Us',
-    label: '+234 801 234 5678',
-    href: 'tel:+2348012345678',
-  },
-  {
-    icon: mailUnreadOutline,
-    title: 'Mail Us',
-    label: 'support@example.org',
-    href: 'mailto:support@example.org',
-  },
-]
-
-const headerLinks: HeaderLink[] = [
-  {
-    title: 'Home',
-    name: 'home',
-  },
-  {
-    title: 'About',
-    name: 'about',
-  },
-  {
-    title: 'Services',
-    name: 'services',
-  },
-  {
-    title: 'Contact',
-    name: 'contact',
-  },
-]
 </script>
 
 <template>
   <main-menu :header-links="headerLinks" :contact-info-links="contactInfoLinks"></main-menu>
   <ion-page id="main-content" style="width: 100%; overflow-x: hidden">
-    <main-toolbar :header-links="headerLinks" :current-route="currentRoute"></main-toolbar>
+    <main-toolbar :header-links="headerLinks"></main-toolbar>
 
     <ion-grid style="padding: 0px; margin-top: 70px">
       <ion-row style="padding: 0px">
@@ -106,6 +59,7 @@ const headerLinks: HeaderLink[] = [
             :route="contactInfo.href"
             :label="contactInfo.label"
             :icon="contactInfo.icon"
+            :internal="false"
           ></hyper-link-text>
         </ion-col>
 
@@ -119,7 +73,7 @@ const headerLinks: HeaderLink[] = [
           <hyper-link-text
             v-for="routerLink of headerLinks"
             :route="{ name: routerLink.name }"
-            :active="currentRoute === routerLink.name"
+            :active="router.currentRoute.value.name === routerLink.name"
             :label="routerLink.title"
             :icon="chevronForwardOutline"
           ></hyper-link-text>
@@ -133,10 +87,10 @@ const headerLinks: HeaderLink[] = [
                 &copy; 2022 Oakview. Designed by James Odike
               </ion-text>
             </ion-col>
-            <ion-col v-for="routerLink of headerLinks" size="auto" class="toolbar-link">
+            <ion-col v-for="{ name, title } of headerLinks" size="auto" class="toolbar-link">
               <hyper-link-text
-                :route="{ name: routerLink.name }"
-                :label="routerLink.title"
+                :route="{ name }"
+                :label="title"
                 :icon="ellipse"
                 color="white"
                 size="10px"
@@ -159,12 +113,6 @@ const headerLinks: HeaderLink[] = [
 
 .toolbar-main {
   width: 1024px;
-  align-items: center;
-}
-
-.footer-bottom {
-  background-color: var(--ion-color-primary);
-  width: 100%;
   align-items: center;
 }
 

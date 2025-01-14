@@ -3,11 +3,12 @@ import type { HeaderLink } from '@/utils/types-interfaces'
 import { menuOutline } from 'ionicons/icons'
 import { IonCol, IonRow, IonMenuButton, IonIcon, IonToolbar, IonHeader } from '@ionic/vue'
 import HyperLinkText from './HyperLinkText.vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
+
+const router = useRouter()
 
 defineProps<{
   headerLinks: HeaderLink[]
-  currentRoute: string // The current route name (used for active link styling)
 }>()
 </script>
 
@@ -31,7 +32,7 @@ defineProps<{
           >
             <hyper-link-text
               :route="{ name: headerLink.name }"
-              :active="currentRoute === headerLink.name"
+              :active="router.currentRoute.value.name === headerLink.name"
               :label="headerLink.title"
             ></hyper-link-text>
           </ion-col>

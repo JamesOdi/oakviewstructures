@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import { IonRow, IonCol, IonItem, IonIcon, IonText } from '@ionic/vue'
+import type { PropType } from 'vue'
 import { RouterLink, type RouteLocationRaw } from 'vue-router'
 
-defineProps<{
-  route?: RouteLocationRaw | string
-  icon?: string
-  label: string
-  active?: boolean
-  color?: string
-  size?: string
-}>()
+defineProps({
+  route: { type: Object as PropType<RouteLocationRaw | string>, required: false },
+  internal: { type: Boolean, required: false, default: true },
+  icon: { type: String, required: false },
+  label: { type: String, required: true },
+  active: { type: Boolean, required: false, default: false },
+  color: { type: String, required: false },
+  size: { type: String, required: false },
+})
 </script>
 
 <template>
@@ -26,9 +28,16 @@ defineProps<{
         >
         </ion-icon>
 
-        <router-link v-if="route" :to="route" :class="{ active, 'white-text': color == 'white' }">{{
-          label
-        }}</router-link>
+        <template v-if="route">
+          <router-link
+            v-if="internal"
+            :to="route"
+            :class="{ active, 'white-text': color == 'white' }"
+            >{{ label }}</router-link
+          >
+          <a v-else-if="typeof route == 'string'" :href="route">{{ label }}</a>
+        </template>
+
         <ion-text v-else>
           {{ label }}
         </ion-text>

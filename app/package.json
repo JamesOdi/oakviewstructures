@@ -19,7 +19,11 @@
   "dependencies": {
     "@ionic/cli": "^7.2.0",
     "@ionic/vue": "^8.4.0",
+    "form-data": "^4.0.1",
+    "handlebars": "^4.7.8",
     "ionicons": "^7.4.0",
+    "mailgun.js": "^11.1.0",
+    "nodemailer": "^6.9.16",
     "pinia": "^2.2.6",
     "process": "^0.11.10",
     "ts-node": "^10.9.2",
@@ -28,7 +32,7 @@
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.0",
-    "@types/node": "^22.9.0",
+    "@types/node": "^22.10.5",
     "@types/vue": "^2.0.0",
     "@vitejs/plugin-vue": "^5.1.4",
     "@vitejs/plugin-vue-jsx": "^4.0.1",

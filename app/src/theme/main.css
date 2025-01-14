@@ -12,6 +12,16 @@
   justify-content: center;
 }
 
+.center-horizontal {
+  display: flex;
+  justify-content: center;
+}
+
+.center-vertical {
+  display: flex;
+  align-items: center;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

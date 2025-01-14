@@ -3,6 +3,8 @@
   --ion-color-primary: #182e67;
   --ion-color-secondary: #eca764;
   --ion-color-primary-text: #545164;
+  --ion-color-danger: #ff0000;
+
   --ion-item-background: transparent;
   --ion-color-secondary-light: #eca86458;
 
@@ -23,7 +25,7 @@
   --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
   --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
 
-  --vt-c-text-light-1: var(--vt-c-indigo);
+  --vt-c-text-light-1: var(--ion-color-primary-text);
   --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
   --vt-c-text-dark-1: var(--vt-c-white);
   --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
@@ -42,6 +44,74 @@
   --color-text: var(--ion-color-primary-text);
 
   /* --section-gap: 160px; */
+}
+
+.ion-padding {
+  padding: 16px;
+}
+
+.ion-no-padding {
+  padding: 0px;
+}
+
+.ion-padding-top {
+  padding-top: 16px;
+}
+
+.ion-padding-start {
+  padding-left: 16px;
+}
+
+.ion-padding-end {
+  padding-right: 16px;
+}
+
+.ion-padding-bottom {
+  padding-bottom: 16px;
+}
+
+.ion-padding-horizontal {
+  padding: 0 16px;
+}
+
+.ion-padding-vertical {
+  padding: 16px 0;
+}
+
+.ion-margin {
+  margin: 16px;
+}
+
+.ion-no-margin {
+  margin: 0px;
+}
+
+.ion-margin-top {
+  margin-top: 16px;
+}
+
+.ion-margin-start {
+  margin-left: 16px;
+}
+
+.ion-margin-end {
+  margin-right: 16px;
+}
+
+.ion-margin-bottom {
+  margin-bottom: 16px;
+}
+
+.ion-margin-horizontal {
+  margin: 0 16px;
+}
+
+.ion-margin-vertical {
+  margin: 16px 0;
+}
+
+.ion-align-items-center {
+  align-items: center;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -73,23 +143,27 @@ a {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 1.75rem;
 }
 
 h2 {
-  font-size: 1.8rem;
-}
-
-h3 {
   font-size: 1.6rem;
 }
 
-h4 {
+h3 {
   font-size: 1.4rem;
 }
 
-h5 {
+h4 {
   font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.75rem;
 }
 
 h1,
@@ -99,34 +173,6 @@ h4,
 h5,
 h6 {
   font-weight: bold;
-}
-
-.ion-padding {
-  padding: 10px;
-}
-
-.ion-padding-top {
-  padding-top: 10px;
-}
-
-.ion-margin {
-  margin: 10px;
-}
-
-.ion-margin-top {
-  margin-top: 10px;
-}
-
-.ion-margin-right {
-  margin-right: 10px;
-}
-
-.ion-padding-left {
-  padding-left: 1rem;
-}
-
-.ion-padding-right {
-  padding-right: 10px;
 }
 
 ion-item {
@@ -140,10 +186,14 @@ ion-item {
 }
 
 ion-icon {
+  font-size: 25px;
   padding-right: 10px;
+  margin-bottom: -3px;
 }
 
 ion-label {
+  font-size: 16px;
+
   ion-icon {
     margin-bottom: -3px;
   }
@@ -186,18 +236,21 @@ body {
 
 @media (max-width: 1024px) {
   h1 {
-    font-size: 1.8rem;
-  }
-  h2 {
     font-size: 1.6rem;
   }
-  h3 {
+  h2 {
     font-size: 1.4rem;
   }
-  h4 {
+  h3 {
     font-size: 1.2rem;
   }
-  h5 {
+  h4 {
     font-size: 1rem;
+  }
+  h5 {
+    font-size: 0.8rem;
+  }
+  h6 {
+    font-size: 0.6rem;
   }
 }
