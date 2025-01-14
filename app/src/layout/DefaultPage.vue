@@ -1,18 +1,25 @@
 <script setup lang="ts">
-import { IonGrid, IonRow, IonCol, IonFooter, IonLabel, IonText, IonPage } from '@ionic/vue'
-import { useRouter } from 'vue-router'
-import { chevronForwardOutline, ellipse } from 'ionicons/icons'
-import HyperLinkText from '@/components/HyperLinkText.vue'
-import type { HeaderLink } from '@/utils/types-interfaces'
-import MainMenu from '@/components/MainMenu.vue'
-import MainToolbar from '@/components/MainToolbar.vue'
-import { headerLinks, contactInfoLinks } from '@/utils/constants'
+import { IonGrid, IonRow, IonCol, IonFooter, IonLabel, IonText, IonPage } from '@ionic/vue';
+import { useRouter } from 'vue-router';
+import { chevronForwardOutline, ellipse } from 'ionicons/icons';
+import HyperLinkText from '@/components/HyperLinkText.vue';
+import MainMenu from '@/components/MainMenu.vue';
+import MainToolbar from '@/components/MainToolbar.vue';
+import { headerLinks } from '@/utils/constants';
+import AppLogoImage from '@/components/AppLogoImage.vue';
+import { useContactStore } from '@/stores/contact';
+import MyContent from '@/components/MyContent.vue';
 
-const router = useRouter()
+const contactStore = useContactStore();
+
+const router = useRouter();
 </script>
 
 <template>
-  <main-menu :header-links="headerLinks" :contact-info-links="contactInfoLinks"></main-menu>
+  <main-menu
+    :header-links="headerLinks"
+    :contact-info-links="contactStore.contactInfoLinks"
+  ></main-menu>
   <ion-page id="main-content" style="width: 100%; overflow-x: hidden">
     <main-toolbar :header-links="headerLinks"></main-toolbar>
 
@@ -27,58 +34,61 @@ const router = useRouter()
     <!-- Bottom padding -->
     <div style="padding-bottom: 200px"></div>
 
-    <ion-footer style="display: flex; flex-direction: column; align-items: center">
-      <ion-row style="display: flex; max-width: 1024px">
-        <!-- First column -->
-        <ion-col class="ion-padding" size="12" size-lg="7">
-          <ion-row>
-            <ion-col>
-              <img src="/assets/oakview_logo.png" alt="Oakview" style="width: 80px; height: 80px" />
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-              <ion-label
-                >Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                unknown printer took a galley of type and scrambled it to make a type specimen book.
-                Ipsum.</ion-label
-              >
-            </ion-col>
-          </ion-row>
-        </ion-col>
+    <ion-footer>
+      <my-content>
+        <ion-row>
+          <!-- First column -->
+          <ion-col class="ion-padding" size="12" size-lg="6">
+            <ion-row>
+              <ion-col>
+                <app-logo-image></app-logo-image>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-label
+                  >At OakView, we don't just build structures; we build experiences, partnerships,
+                  and lasting impressions. Join us on this journey of redefining spaces and shaping
+                  the future of construction—one project at a time. <br /><br />Discover what's
+                  possible with Oak View.</ion-label
+                >
+              </ion-col>
+            </ion-row>
+          </ion-col>
 
-        <ion-col class="ion-padding" size="12" size-lg="3">
-          <ion-row style="height: 80px; align-items: center">
-            <ion-col>
-              <h4>Contact Info</h4>
-            </ion-col>
-          </ion-row>
-          <hyper-link-text
-            v-for="contactInfo of contactInfoLinks"
-            :route="contactInfo.href"
-            :label="contactInfo.label"
-            :icon="contactInfo.icon"
-            :internal="false"
-          ></hyper-link-text>
-        </ion-col>
+          <ion-col class="ion-padding" size="12" size-lg="3">
+            <ion-row class="ion-padding-top ion-margin-bottom ion-padding-bottom">
+              <ion-col>
+                <h4>Contact Info</h4>
+              </ion-col>
+            </ion-row>
+            <hyper-link-text
+              v-for="contactInfo of contactStore.contactInfoLinks"
+              :route="contactInfo.href"
+              :label="contactInfo.label"
+              :icon="contactInfo.icon"
+              :internal="false"
+            ></hyper-link-text>
+          </ion-col>
 
-        <ion-col class="ion-padding" size="12" size-lg="2">
-          <ion-row style="height: 80px; align-items: center">
-            <ion-col>
-              <h4>Quick Links</h4>
-            </ion-col>
-          </ion-row>
+          <ion-col size="12" size-lg="3" class="ion-padding-top quick-link">
+            <ion-row class="ion-padding-top ion-margin-bottom ion-padding-bottom">
+              <ion-col>
+                <h4>Quick Links</h4>
+              </ion-col>
+            </ion-row>
 
-          <hyper-link-text
-            v-for="routerLink of headerLinks"
-            :route="{ name: routerLink.name }"
-            :active="router.currentRoute.value.name === routerLink.name"
-            :label="routerLink.title"
-            :icon="chevronForwardOutline"
-          ></hyper-link-text>
-        </ion-col>
-      </ion-row>
+            <hyper-link-text
+              v-for="routerLink of headerLinks"
+              :route="{ name: routerLink.name }"
+              :active="router.currentRoute.value.name === routerLink.name"
+              :label="routerLink.title"
+              :icon="chevronForwardOutline"
+            ></hyper-link-text>
+          </ion-col>
+        </ion-row>
+      </my-content>
+
       <ion-row style="background-color: var(--ion-color-primary); width: 100%; min-height: 30px">
         <ion-col style="justify-items: center">
           <ion-row class="toolbar-main" style="display: flex">
@@ -124,6 +134,10 @@ const router = useRouter()
   display: none;
 }
 
+.quick-link {
+  padding-left: 50px;
+}
+
 @media (max-width: 1024px) {
   .toolbar-main {
     width: 100%;
@@ -135,6 +149,10 @@ const router = useRouter()
 
   .menu-toggle {
     display: block;
+  }
+
+  .quick-link {
+    padding: 16px;
   }
 }
 </style>

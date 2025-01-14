@@ -1,15 +1,16 @@
 <script setup lang="ts">
-import type { HeaderLink } from '@/utils/types-interfaces'
-import { menuOutline } from 'ionicons/icons'
-import { IonCol, IonRow, IonMenuButton, IonIcon, IonToolbar, IonHeader } from '@ionic/vue'
-import HyperLinkText from './HyperLinkText.vue'
-import { RouterLink, useRouter } from 'vue-router'
+import type { HeaderLink } from '@/utils/types-interfaces';
+import { menuOutline } from 'ionicons/icons';
+import { IonCol, IonRow, IonMenuButton, IonIcon, IonToolbar, IonHeader } from '@ionic/vue';
+import HyperLinkText from './HyperLinkText.vue';
+import { useRouter } from 'vue-router';
+import AppLogoImage from '@/components/AppLogoImage.vue';
 
-const router = useRouter()
+const router = useRouter();
 
 defineProps<{
-  headerLinks: HeaderLink[]
-}>()
+  headerLinks: HeaderLink[];
+}>();
 </script>
 
 <template>
@@ -18,9 +19,7 @@ defineProps<{
       <div style="display: flex; justify-content: center">
         <ion-row class="toolbar-main">
           <ion-col>
-            <router-link :to="{ name: 'home' }">
-              <img src="/assets/oakview_logo.png" alt="Oakview" style="width: 70px; height: 70px" />
-            </router-link>
+            <app-logo-image></app-logo-image>
           </ion-col>
 
           <ion-col

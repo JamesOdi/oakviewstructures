@@ -1,13 +1,13 @@
 <script lang="ts">
 export default {
   inheritAttrs: true,
-}
+};
 </script>
 
 <script setup lang="ts">
-import { IonRow, IonCol, IonIcon, IonLabel, IonItem } from '@ionic/vue'
-import type { PropType } from 'vue'
-import { flowerOutline } from 'ionicons/icons'
+import { IonRow, IonCol, IonIcon, IonLabel, IonItem } from '@ionic/vue';
+import type { PropType } from 'vue';
+import { flowerOutline } from 'ionicons/icons';
 
 defineProps({
   titlePosition: {
@@ -28,7 +28,7 @@ defineProps({
     default: flowerOutline,
     required: false,
   },
-})
+});
 </script>
 
 <template>

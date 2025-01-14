@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { ContactInfoLink, HeaderLink } from '@/utils/types-interfaces'
-import { IonRow, IonCol, IonItem, IonIcon, IonLabel } from '@ionic/vue'
-import HyperLinkText from './HyperLinkText.vue'
-import { RouterLink, useRouter } from 'vue-router'
+import type { ContactInfoLink, HeaderLink } from '@/utils/types-interfaces';
+import { IonRow, IonCol, IonItem, IonIcon, IonLabel, IonMenu } from '@ionic/vue';
+import HyperLinkText from './HyperLinkText.vue';
+import { useRouter } from 'vue-router';
 
-const router = useRouter()
+const router = useRouter();
 
 defineProps<{
-  headerLinks: HeaderLink[]
-  contactInfoLinks: ContactInfoLink[]
-}>()
+  headerLinks: HeaderLink[];
+  contactInfoLinks: ContactInfoLink[];
+}>();
 </script>
 
 <template>

@@ -1,39 +1,12 @@
 <script setup lang="ts">
-import DefaultPage from '@/layout/DefaultPage.vue'
-import { IonRow, IonCol, IonIcon, IonLabel, IonCard, IonCardContent } from '@ionic/vue'
-import { buildOutline, bulbOutline, constructOutline, receiptOutline } from 'ionicons/icons'
-import MySection from '@/components/MySection.vue'
-import MyContent from '@/components/MyContent.vue'
-import PageHeaderImageTitle from '@/components/PageHeaderImageTitle.vue'
+import DefaultPage from '@/layout/DefaultPage.vue';
+import { IonRow, IonCol, IonIcon, IonLabel, IonCard, IonCardContent } from '@ionic/vue';
+import MySection from '@/components/MySection.vue';
+import MyContent from '@/components/MyContent.vue';
+import PageHeaderImageTitle from '@/components/PageHeaderImageTitle.vue';
+import { useProjectStore } from '@/stores/project';
 
-type ProjectTypeItem = {
-  title: string
-  description: string
-  icon: string
-}
-
-const projectTypeItems: ProjectTypeItem[] = [
-  {
-    title: 'Planning',
-    description: 'Design and develop a comprehensive plan for your home improvement project.',
-    icon: receiptOutline,
-  },
-  {
-    title: 'Construction',
-    description: 'Design and develop a comprehensive plan for your home improvement project.',
-    icon: constructOutline,
-  },
-  {
-    title: 'Operation & Maintenance',
-    description: 'Design and develop a comprehensive plan for your home improvement project.',
-    icon: buildOutline,
-  },
-  {
-    title: 'Design',
-    description: 'Design and develop a comprehensive plan for your home improvement project.',
-    icon: bulbOutline,
-  },
-]
+const projectStore = useProjectStore();
 </script>
 
 <template>
@@ -74,13 +47,13 @@ const projectTypeItems: ProjectTypeItem[] = [
           >
             <ion-row class="ion-margin-top ion-padding" style="padding: 0px; margin: 0px">
               <ion-col
-                v-for="({ icon, title, description }, idx) of projectTypeItems"
+                v-for="({ icon, title, description }, idx) of projectStore.projectTypeItems"
                 :key="idx"
                 size="12"
                 size-md="6"
                 style="padding: 5px; margin: 0px"
               >
-                <ion-card class="ion-margin-top ion-margin-right">
+                <ion-card class="ion-margin-top ion-margin-right" style="border-radius: 15px">
                   <ion-card-content class="ion-padding">
                     <ion-row>
                       <ion-col>
@@ -144,6 +117,8 @@ const projectTypeItems: ProjectTypeItem[] = [
             </my-section>
           </ion-col>
           <ion-col
+            v-for="(statistic, idx) of projectStore.numericStatistics"
+            :key="idx"
             size="auto"
             style="
               background-color: var(--ion-color-secondary-light);
@@ -154,36 +129,14 @@ const projectTypeItems: ProjectTypeItem[] = [
           >
             <ion-row>
               <ion-col>
-                <h1 style="color: var(--ion-color-secondary)">100+</h1>
+                <h1 style="color: var(--ion-color-secondary)">{{ statistic.count }}</h1>
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col>
-                <ion-label style="color: var(--vt-c-white); font-size: 15px"
-                  >Completed Projects</ion-label
-                >
-              </ion-col>
-            </ion-row>
-          </ion-col>
-          <ion-col
-            size="auto"
-            style="
-              background-color: var(--ion-color-secondary-light);
-              border-radius: 10px;
-              padding: 10px;
-              margin: 5px;
-            "
-          >
-            <ion-row>
-              <ion-col>
-                <h1 style="color: var(--ion-color-secondary)">100+</h1>
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-label style="color: var(--vt-c-white); font-size: 15px"
-                  >Completed Projects</ion-label
-                >
+                <ion-label style="color: var(--vt-c-white); font-size: 15px">{{
+                  statistic.title
+                }}</ion-label>
               </ion-col>
             </ion-row>
           </ion-col>
@@ -195,16 +148,14 @@ const projectTypeItems: ProjectTypeItem[] = [
       <ion-row style="display: flex; align-items: center">
         <ion-col size-sm="12" size-md="6">
           <div style="margin-left: auto">
-            <my-section
-              title="WHY OAKVIEW?"
-              subtitle="Build better futures with steady focus on quality"
-            >
+            <my-section title="WHY OAKVIEW?" subtitle="Because you deserve the best and only best">
               <ion-label
-                >Our mission is to deliver exceptional construction solutions that merge
-                functionality, sustainability and beauty, driven by a passionate team of experts
-                dedicated to exceeding client expectations, pushing industry boundaries and
-                fostering a culture of innovation, collaboration and environmental
-                stewardship</ion-label
+                >With a track record of delivering high-quality projects, Oak View has earned the
+                trust of clients across Nigeria. From eco-friendly park additions to stylish
+                container restaurants, to revived commercial and residential spaces, we have been
+                consistent in delivering the best quality for our dear clients that are judged as
+                being breathtakingly timeless. Join the Oak View train of architectural perfection
+                and stand out among the rest.</ion-label
               >
             </my-section>
           </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import DefaultPage from '@/layout/DefaultPage.vue'
-import MyContent from '@/components/MyContent.vue'
+import DefaultPage from '@/layout/DefaultPage.vue';
+import MyContent from '@/components/MyContent.vue';
 import {
   IonRow,
   IonCol,
@@ -10,24 +10,15 @@ import {
   IonText,
   IonTextarea,
   IonButton,
-} from '@ionic/vue'
-import PageHeaderImageTitle from '@/components/PageHeaderImageTitle.vue'
-import { contactInfoLinks } from '@/utils/constants'
-import { generateHyperLinkText } from '@/utils/generate-hyper-link-text'
-import { onMounted, ref } from 'vue'
-import type { ContactForm } from '@/utils/types-interfaces'
-import { sendMail } from '@/utils/send-mail'
-import { contactFormInputs } from '@/utils/constants'
+} from '@ionic/vue';
+import PageHeaderImageTitle from '@/components/PageHeaderImageTitle.vue';
+import { ref } from 'vue';
+import type { ContactForm } from '@/utils/types-interfaces';
+import { sendMail } from '@/utils/send-mail';
+import { contactFormInputs } from '@/utils/constants';
+import { useContactStore } from '@/stores/contact';
 
-type ContactItem = {
-  title: string
-  content: string
-}
-
-type ContactGroup = {
-  title: string
-  items: ContactItem[]
-}
+const contactStore = useContactStore();
 
 const pageModel = ref<ContactForm>({
   businessName: '',
@@ -35,63 +26,22 @@ const pageModel = ref<ContactForm>({
   address: '',
   phone: '',
   message: '',
-})
-
-const contactGroups: ContactGroup[] = [
-  {
-    title: 'Ask how we can help you:',
-    items: [
-      {
-        title: 'See our platform in action',
-        content: "Request a personalized demo of OakView's partner marketing platform.",
-      },
-      {
-        title: 'Master performance marketing',
-        content:
-          'From OakView, learn how to grow your business through performance-based partnerships.',
-      },
-      {
-        title: 'Explore life at OakView',
-        content:
-          'Search open positions, read about company culture and values, and explore our charitable initiatives.',
-      },
-      {
-        title: 'See our platform in action',
-        content: "Request a personalized demo of OakView's partner marketing platform.",
-      },
-    ],
-  },
-  {
-    title: 'Points of Contact',
-    items: contactInfoLinks.map((contact) => {
-      return {
-        title: contact.title,
-        content: generateHyperLinkText(contact.label, contact.hrefType),
-      }
-    }),
-  },
-  {
-    title: 'Additional Office Locations',
-    items: [
-      {
-        title: import.meta.env.VITE_ADDITIONAL_OFFICE_LOCATION_STATE,
-        content: import.meta.env.VITE_ADDITIONAL_OFFICE_LOCATION_FULL,
-      },
-    ],
-  },
-]
+});
 
 const sendEmail = () => {
-  sendMail(pageModel.value)
-}
+  sendMail(pageModel.value);
+};
 </script>
 
 <template>
   <default-page>
-    <page-header-image-title
-      title="Contact"
-      image-location="/assets/oakview_home_banner.jpg"
-    ></page-header-image-title>
+    <my-content col-size="12">
+      <page-header-image-title
+        title="Contact"
+        subtitle="At the heart of Oak View is a commitment to sustainability and innovation. Join us as we seek to redefine the living and working experience in Africa, one timber at a time!"
+        image-location="/assets/oakview_home_banner.jpg"
+      ></page-header-image-title>
+    </my-content>
 
     <my-content col-size="12" style="margin-top: 50px; color: black">
       <ion-row class="center-children"
@@ -101,7 +51,7 @@ const sendEmail = () => {
       <ion-row>
         <ion-col size="12" size-md="6" class="ion-padding-horizontal">
           <ion-row
-            v-for="(contactGroup, groupIdx) of contactGroups"
+            v-for="(contactGroup, groupIdx) of contactStore.contactGroups"
             :key="groupIdx"
             class="ion-margin-top ion-padding-top"
           >

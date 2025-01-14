@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { IonRow, IonCol } from '@ionic/vue'
+import { IonRow, IonCol } from '@ionic/vue';
 
 defineProps({
   title: { type: String, required: true },
   subtitle: { type: String, required: false },
   imageLocation: { type: String, required: true },
-})
+});
 </script>
 
 <template>

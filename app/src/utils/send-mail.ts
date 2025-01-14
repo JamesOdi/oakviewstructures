@@ -1,10 +1,10 @@
-import Handlebars from 'handlebars'
-import type { ContactForm } from './types-interfaces'
-import { contactFormInputs } from './constants'
+import Handlebars from 'handlebars';
+import type { ContactForm } from './types-interfaces';
+import { contactFormInputs } from './constants';
 
 export async function sendMail(
   content: {
-    to?: string
+    to?: string;
   } & ContactForm,
 ) {
   //   const currentDir = new URL('.', import.meta.url).pathname

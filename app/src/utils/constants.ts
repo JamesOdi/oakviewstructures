@@ -1,31 +1,6 @@
-import { locationOutline, callOutline, mailUnreadOutline } from 'ionicons/icons'
-import type { ContactFormInput, ContactInfoLink, HeaderLink } from './types-interfaces'
+import type { ContactFormInput, HeaderLink } from './types-interfaces';
 
-export const DEFAULT_MAX_WIDTH = '1024px'
-const officeNumber = import.meta.env.VITE_OFFICE_NUMBER
-const officeMail = import.meta.env.VITE_OFFICE_MAIL
-
-export const contactInfoLinks: ContactInfoLink[] = [
-  {
-    icon: locationOutline,
-    title: 'Location',
-    label: import.meta.env.VITE_OFFICE_ADDRESS,
-  },
-  {
-    icon: callOutline,
-    title: 'Call Us',
-    label: officeNumber,
-    href: `tel:${officeNumber}`,
-    hrefType: 'tel',
-  },
-  {
-    icon: mailUnreadOutline,
-    title: 'Mail Us',
-    label: officeMail,
-    href: `mailto:${officeMail}`,
-    hrefType: 'mailto',
-  },
-]
+export const DEFAULT_MAX_WIDTH = '1024px';
 
 export const contactFormInputs: ContactFormInput[] = [
   {
@@ -52,7 +27,7 @@ export const contactFormInputs: ContactFormInput[] = [
     formType: 'input',
     label: 'Address',
   },
-]
+];
 
 export const headerLinks: HeaderLink[] = [
   {
@@ -71,4 +46,4 @@ export const headerLinks: HeaderLink[] = [
     title: 'Contact',
     name: 'contact',
   },
-]
+];

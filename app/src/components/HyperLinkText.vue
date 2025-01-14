@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { IonRow, IonCol, IonItem, IonIcon, IonText } from '@ionic/vue'
-import type { PropType } from 'vue'
-import { RouterLink, type RouteLocationRaw } from 'vue-router'
+import { IonRow, IonCol, IonItem, IonIcon, IonText } from '@ionic/vue';
+import type { PropType } from 'vue';
+import { RouterLink, type RouteLocationRaw } from 'vue-router';
 
 defineProps({
   route: { type: Object as PropType<RouteLocationRaw | string>, required: false },
@@ -11,37 +11,29 @@ defineProps({
   active: { type: Boolean, required: false, default: false },
   color: { type: String, required: false },
   size: { type: String, required: false },
-})
+});
 </script>
 
 <template>
   <ion-row>
-    <ion-col size="auto">
-      <ion-item lines="none">
-        <ion-icon
-          v-if="icon"
-          :icon="icon"
-          slot="start"
-          size="small"
-          color="secondary"
-          :style="{ width: size, height: size }"
+    <ion-col v-if="icon" size="auto" size-lg="2">
+      <ion-icon :icon="icon" size="small" color="secondary" :style="{ width: size, height: size }">
+      </ion-icon>
+    </ion-col>
+    <ion-col size="auto" size-lg="10">
+      <template v-if="route">
+        <router-link
+          v-if="internal"
+          :to="route"
+          :class="{ active, 'white-text': color == 'white' }"
+          >{{ label }}</router-link
         >
-        </ion-icon>
+        <a v-else-if="typeof route == 'string'" :href="route">{{ label }}</a>
+      </template>
 
-        <template v-if="route">
-          <router-link
-            v-if="internal"
-            :to="route"
-            :class="{ active, 'white-text': color == 'white' }"
-            >{{ label }}</router-link
-          >
-          <a v-else-if="typeof route == 'string'" :href="route">{{ label }}</a>
-        </template>
-
-        <ion-text v-else>
-          {{ label }}
-        </ion-text>
-      </ion-item>
+      <ion-text v-else>
+        {{ label }}
+      </ion-text>
     </ion-col>
   </ion-row>
 </template>

@@ -166,6 +166,14 @@ h6 {
   font-size: 0.75rem;
 }
 
+ul {
+  font-size: medium;
+}
+
+ion-text {
+  font-size: medium;
+}
+
 h1,
 h2,
 h3,
@@ -222,7 +230,7 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 13px;
+  font-size: medium;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

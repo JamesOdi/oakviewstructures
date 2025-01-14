@@ -1,12 +1,12 @@
 <script lang="ts">
 export default {
   inheritAttrs: true,
-}
+};
 </script>
 
 <script lang="ts" setup>
-import { IonRow, IonCol } from '@ionic/vue'
-import { computed } from 'vue'
+import { IonRow, IonCol } from '@ionic/vue';
+import { computed } from 'vue';
 
 const props = defineProps({
   fullWidth: {
@@ -18,9 +18,9 @@ const props = defineProps({
     default: 'auto',
     required: false,
   },
-})
+});
 
-const defaultWidth = computed(() => !props.fullWidth)
+const defaultWidth = computed(() => !props.fullWidth);
 </script>
 
 <template>
