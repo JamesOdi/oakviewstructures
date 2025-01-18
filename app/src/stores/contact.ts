@@ -40,7 +40,7 @@ export const useContactStore = defineStore('contact', () => {
         {
           title: 'OakView Design Experience',
           content:
-            'Redefine your living and workspace with a personalized session led by our expert architects and interior designers at Oak View.',
+            'Redefine your living and workspace with a personalized session led by our expert architects and interior designers at OakView.',
         },
         {
           title: 'Explore life at OakView',

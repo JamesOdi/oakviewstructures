@@ -148,13 +148,16 @@ const projectStore = useProjectStore();
       <ion-row style="display: flex; align-items: center">
         <ion-col size-sm="12" size-md="6">
           <div style="margin-left: auto">
-            <my-section title="WHY OAKVIEW?" subtitle="Because you deserve the best and only best">
+            <my-section
+              title="WHY OAKVIEW?"
+              subtitle="Because you deserve the best and only the best"
+            >
               <ion-label
-                >With a track record of delivering high-quality projects, Oak View has earned the
+                >With a track record of delivering high-quality projects, OakView has earned the
                 trust of clients across Nigeria. From eco-friendly park additions to stylish
                 container restaurants, to revived commercial and residential spaces, we have been
                 consistent in delivering the best quality for our dear clients that are judged as
-                being breathtakingly timeless. Join the Oak View train of architectural perfection
+                being breathtakingly timeless. Join the OakView train of architectural perfection
                 and stand out among the rest.</ion-label
               >
             </my-section>

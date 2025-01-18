@@ -60,7 +60,7 @@ const router = useRouter();
                   >At OakView, we don't just build structures; we build experiences, partnerships,
                   and lasting impressions. Join us on this journey of redefining spaces and shaping
                   the future of construction—one project at a time. <br /><br />Discover what's
-                  possible with Oak View.</ion-label
+                  possible with OakView.</ion-label
                 >
               </ion-col>
             </ion-row>

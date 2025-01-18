@@ -22,16 +22,16 @@ const offeringStore = useOfferingStore();
               <ion-row>
                 <ion-col class="ion-no-padding">
                   <ion-label
-                    >At Oak View, we believe every project tells a story—a story of vision,
+                    >At OakView, we believe every project tells a story—a story of vision,
                     creativity, and sustainable impact. Founded with a passion for transforming the
                     living and working experience in Africa, we specialize in delivering exceptional
                     design and construction services with a distinctive touch: the innovative use of
                     timber.<br />
                     <br />At the foundation of our work and the core of our spirit lies
-                    Excellence—the bedrock upon which every idea at Oak View is built and every
-                    dream takes shape. Like the roots of a mighty oak tree, our commitment to
-                    excellence anchors everything we do, ensuring strength, beauty, and lasting
-                    impact in every project.</ion-label
+                    Excellence—the bedrock upon which every idea at OakView is built and every dream
+                    takes shape. Like the roots of a mighty oak tree, our commitment to excellence
+                    anchors everything we do, ensuring strength, beauty, and lasting impact in every
+                    project.</ion-label
                   >
                 </ion-col>
               </ion-row>

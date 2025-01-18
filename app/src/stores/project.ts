@@ -19,7 +19,7 @@ export const useProjectStore = defineStore('project', () => {
     {
       title: 'Furnishing & Finishings',
       description:
-        'Considered the final icing on the Oak View cake, our furnishing services ensure that the spirit of quality and timelessness is carried through to every detail. We create spaces that are as inviting as they are enduring.',
+        'Considered the final icing on the OakView cake, our furnishing services ensure that the spirit of quality and timelessness is carried through to every detail. We create spaces that are as inviting as they are enduring.',
       icon: buildOutline,
     },
     {

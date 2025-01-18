@@ -38,7 +38,7 @@ const sendEmail = () => {
     <my-content col-size="12">
       <page-header-image-title
         title="Contact"
-        subtitle="At the heart of Oak View is a commitment to sustainability and innovation. Join us as we seek to redefine the living and working experience in Africa, one timber at a time!"
+        subtitle="At the heart of OakView is a commitment to sustainability and innovation. Join us as we seek to redefine the living and working experience in Africa, one timber at a time!"
         image-location="/assets/oakview_home_banner.jpg"
       ></page-header-image-title>
     </my-content>

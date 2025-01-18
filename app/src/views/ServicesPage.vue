@@ -25,9 +25,9 @@ const serviceStore = useServiceStore();
               <ion-row>
                 <ion-col class="ion-no-padding">
                   <ion-label
-                    >At Oak View, we combine innovation, craftsmanship, and sustainability to
-                    deliver exceptional projects tailored to your needs. Our expertise spans a
-                    variety of services to bring your vision to life.</ion-label
+                    >At OakView, we combine innovation, craftsmanship, and sustainability to deliver
+                    exceptional projects tailored to your needs. Our expertise spans a variety of
+                    services to bring your vision to life.</ion-label
                   >
                 </ion-col>
               </ion-row>
@@ -97,7 +97,7 @@ const serviceStore = useServiceStore();
         <ion-row class="ion-margin-top">
           <ion-col>
             <ion-label style="font-weight: bold"
-              >Contact us today to discuss your next project and experience the Oak View
+              >Contact us today to discuss your next project and experience the OakView
               difference.</ion-label
             >
           </ion-col>
