@@ -5,6 +5,8 @@ import MySection from '@/components/MySection.vue';
 import MyContent from '@/components/MyContent.vue';
 import PageHeaderImageTitle from '@/components/PageHeaderImageTitle.vue';
 import { useProjectStore } from '@/stores/project';
+import { computed } from 'vue';
+import { companyName } from '@/utils/constants';
 
 const projectStore = useProjectStore();
 </script>
@@ -12,9 +14,9 @@ const projectStore = useProjectStore();
 <template>
   <default-page>
     <page-header-image-title
-      title="OAKVIEW"
+      :title="companyName.toUpperCase()"
       subtitle="...More than construction we design experiences"
-      image-location="/assets/oakview_home_banner.jpg"
+      large-screen-image-location="/assets/homepage_img.png"
     ></page-header-image-title>
 
     <my-content style="margin-top: 50px">
@@ -28,7 +30,7 @@ const projectStore = useProjectStore();
         </ion-col>
 
         <ion-col size="12" size-md="6">
-          <my-section title="OUR MISSION" subtitle="OAKVIEW'S MISSION">
+          <my-section title="OUR MISSION" :subtitle="`${companyName.toUpperCase()}'S MISSION`">
             <ion-label
               >Our mission is to deliver exceptional construction solutions that merge
               functionality, sustainability and beauty, driven by a passionate team of experts
@@ -111,7 +113,7 @@ const projectStore = useProjectStore();
           <ion-col size="12" size-md="6">
             <my-section
               title="OUR STATISTICS"
-              subtitle=" OAKVIEW will help you get things complete reality"
+              subtitle="Numbers That Tell Our Story of Excellence"
               style="color: white"
             >
             </my-section>
@@ -149,16 +151,16 @@ const projectStore = useProjectStore();
         <ion-col size-sm="12" size-md="6">
           <div style="margin-left: auto">
             <my-section
-              title="WHY OAKVIEW?"
+              :title="`WHY ${companyName.toUpperCase()}?`"
               subtitle="Because you deserve the best and only the best"
             >
               <ion-label
-                >With a track record of delivering high-quality projects, OakView has earned the
-                trust of clients across Nigeria. From eco-friendly park additions to stylish
-                container restaurants, to revived commercial and residential spaces, we have been
-                consistent in delivering the best quality for our dear clients that are judged as
-                being breathtakingly timeless. Join the OakView train of architectural perfection
-                and stand out among the rest.</ion-label
+                >With a track record of delivering high-quality projects, {{ companyName }} has
+                earned the trust of clients across Nigeria. From eco-friendly park additions to
+                stylish container restaurants, to revived commercial and residential spaces, we have
+                been consistent in delivering the best quality for our dear clients that are judged
+                as being breathtakingly timeless. Join the {{ companyName }} train of architectural
+                perfection and stand out among the rest.</ion-label
               >
             </my-section>
           </div>

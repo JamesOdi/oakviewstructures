@@ -1,4 +1,5 @@
-import { generateHyperLinkText } from '@/utils/generate-hyper-link-text';
+import { companyName } from '@/utils/constants';
+import { generateHyperLink, generateHyperLinkTextFromUrl } from '@/utils/generate-hyper-link-text';
 import type { ContactGroup, ContactInfoLink } from '@/utils/types-interfaces';
 import { locationOutline, callOutline, mailUnreadOutline } from 'ionicons/icons';
 import { defineStore } from 'pinia';
@@ -11,6 +12,7 @@ export const useContactStore = defineStore('contact', () => {
     {
       icon: locationOutline,
       title: 'Location',
+      href: import.meta.env.VITE_OFFICE_ADDRESS_URL,
       label: import.meta.env.VITE_OFFICE_ADDRESS,
     },
     {
@@ -38,12 +40,11 @@ export const useContactStore = defineStore('contact', () => {
           content: 'Schedule a site visit from our team of seasoned and committed professionals.',
         },
         {
-          title: 'OakView Design Experience',
-          content:
-            'Redefine your living and workspace with a personalized session led by our expert architects and interior designers at OakView.',
+          title: `${companyName} Design Experience`,
+          content: `Redefine your living and workspace with a personalized session led by our expert architects and interior designers at ${companyName}.`,
         },
         {
-          title: 'Explore life at OakView',
+          title: `Explore life at ${companyName}`,
           content:
             "Find out about open positions, our company's culture and values, and our humble efforts to giving back to the community.",
         },
@@ -59,7 +60,11 @@ export const useContactStore = defineStore('contact', () => {
       items: contactInfoLinks.map((contact) => {
         return {
           title: contact.title,
-          content: generateHyperLinkText(contact.label, contact.hrefType),
+          content: generateHyperLink({
+            text: contact.label,
+            linkType: contact.hrefType,
+            url: contact.href,
+          }),
         };
       }),
     },
@@ -68,7 +73,10 @@ export const useContactStore = defineStore('contact', () => {
       items: [
         {
           title: import.meta.env.VITE_ADDITIONAL_OFFICE_LOCATION_STATE,
-          content: import.meta.env.VITE_ADDITIONAL_OFFICE_LOCATION_FULL,
+          content: generateHyperLinkTextFromUrl(
+            import.meta.env.VITE_ADDITIONAL_OFFICE_LOCATION_FULL,
+            import.meta.env.VITE_ADDITIONAL_OFFICE_LOCATION_FULL_URL,
+          ),
         },
       ],
     },

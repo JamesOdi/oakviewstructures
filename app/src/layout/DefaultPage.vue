@@ -10,6 +10,7 @@ import {
   IonItem,
   IonIcon,
 } from '@ionic/vue';
+import { companyName } from '@/utils/constants';
 import { useRouter } from 'vue-router';
 import { chevronForwardOutline, ellipse } from 'ionicons/icons';
 import HyperLinkText from '@/components/HyperLinkText.vue';
@@ -21,15 +22,11 @@ import { useContactStore } from '@/stores/contact';
 import MyContent from '@/components/MyContent.vue';
 
 const contactStore = useContactStore();
-
 const router = useRouter();
 </script>
 
 <template>
-  <main-menu
-    :header-links="headerLinks"
-    :contact-info-links="contactStore.contactInfoLinks"
-  ></main-menu>
+  <main-menu></main-menu>
   <ion-page id="main-content" style="width: 100%; overflow-x: hidden">
     <main-toolbar :header-links="headerLinks"></main-toolbar>
 
@@ -57,10 +54,10 @@ const router = useRouter();
             <ion-row>
               <ion-col>
                 <ion-label
-                  >At OakView, we don't just build structures; we build experiences, partnerships,
-                  and lasting impressions. Join us on this journey of redefining spaces and shaping
-                  the future of construction—one project at a time. <br /><br />Discover what's
-                  possible with OakView.</ion-label
+                  >At {{ companyName }}, we don't just build structures; we build experiences,
+                  partnerships, and lasting impressions. Join us on this journey of redefining
+                  spaces and shaping the future of construction—one project at a time.
+                  <br /><br />Discover what's possible with {{ companyName }}.</ion-label
                 >
               </ion-col>
             </ion-row>
@@ -104,7 +101,7 @@ const router = useRouter();
           <ion-row class="toolbar-main" style="display: flex">
             <ion-col>
               <ion-text style="color: white">
-                &copy; 2022 Oakview. Designed by James Odike
+                &copy; 2025 {{ companyName }}. Designed by James Odike
               </ion-text>
             </ion-col>
             <ion-col v-for="{ name, title } of headerLinks" size="auto" class="toolbar-link">
@@ -122,13 +119,6 @@ const router = useRouter();
                   </ion-item>
                 </ion-col>
               </ion-row>
-              <!-- <hyper-link-text
-                :route="{ name }"
-                :label="title"
-                :icon="ellipse"
-                color="white"
-                size="10px"
-              ></hyper-link-text> -->
             </ion-col>
           </ion-row>
         </ion-col>

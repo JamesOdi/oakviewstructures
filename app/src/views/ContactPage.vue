@@ -10,13 +10,14 @@ import {
   IonText,
   IonTextarea,
   IonButton,
+  IonLabel,
 } from '@ionic/vue';
 import PageHeaderImageTitle from '@/components/PageHeaderImageTitle.vue';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import type { ContactForm } from '@/utils/types-interfaces';
-import { sendMail } from '@/utils/send-mail';
 import { contactFormInputs } from '@/utils/constants';
 import { useContactStore } from '@/stores/contact';
+import { companyName } from '@/utils/constants';
 
 const contactStore = useContactStore();
 
@@ -28,20 +29,16 @@ const pageModel = ref<ContactForm>({
   message: '',
 });
 
-const sendEmail = () => {
-  sendMail(pageModel.value);
-};
+const contactFormEnabled = computed(() => import.meta.env.CONTACT_FORM_ENABLED == 'enabled');
 </script>
 
 <template>
   <default-page>
-    <my-content col-size="12">
-      <page-header-image-title
-        title="Contact"
-        subtitle="At the heart of OakView is a commitment to sustainability and innovation. Join us as we seek to redefine the living and working experience in Africa, one timber at a time!"
-        image-location="/assets/oakview_home_banner.jpg"
-      ></page-header-image-title>
-    </my-content>
+    <page-header-image-title
+      title="Contact"
+      :subtitle="`At the heart of ${companyName} is a commitment to sustainability and innovation. Join us as we seek to redefine the living and working experience in Africa, one timber at a time!`"
+      large-screen-image-location="/assets/contact_us_img.png"
+    ></page-header-image-title>
 
     <my-content col-size="12" style="margin-top: 50px; color: black">
       <ion-row class="center-children"
@@ -77,7 +74,7 @@ const sendEmail = () => {
                     <ion-col>
                       <span
                         v-html="contact.content"
-                        style="color: var(--ion-color-primary-text); font-size: medium"
+                        style="color: var(--ion-color-primary-text)"
                       ></span>
                     </ion-col>
                   </ion-row>
@@ -91,6 +88,15 @@ const sendEmail = () => {
           <ion-row class="ion-margin-top ion-padding-top">
             <ion-col>
               <h3>Contact Form</h3>
+            </ion-col>
+          </ion-row>
+
+          <ion-row v-if="!contactFormEnabled">
+            <ion-col>
+              <ion-label style="color: var(--ion-color-danger)"
+                >This form is currently disabled. We're working on making it even easier for you to
+                communicate with us. Stay tuned!</ion-label
+              >
             </ion-col>
           </ion-row>
 
@@ -136,9 +142,9 @@ const sendEmail = () => {
                   </ion-textarea>
                 </ion-item>
 
-                <ion-button class="ion-margin-top" expand="block" @click="sendEmail" disabled>
+                <!-- <ion-button class="ion-margin-top" expand="block" @click="sendEmail" disabled>
                   Submit
-                </ion-button>
+                </ion-button> -->
               </ion-list>
             </ion-col>
           </ion-row>

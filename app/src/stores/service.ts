@@ -78,11 +78,11 @@ export const useServiceStore = defineStore('service', () => {
     },
   ];
 
-  const reasonsForChoosingOakView = [
+  const reasonsForChoosingUs = [
     'Expertise in innovative design and sustainable construction',
     'Commitment to delivering projects that exceed expectations',
     'A team of professionals dedicated to bringing your vision to life',
   ];
 
-  return { servicesOffered, reasonsForChoosingOakView };
+  return { servicesOffered, reasonsForChoosingUs };
 });

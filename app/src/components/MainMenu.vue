@@ -3,13 +3,11 @@ import type { ContactInfoLink, HeaderLink } from '@/utils/types-interfaces';
 import { IonRow, IonCol, IonItem, IonIcon, IonLabel, IonMenu } from '@ionic/vue';
 import HyperLinkText from './HyperLinkText.vue';
 import { useRouter } from 'vue-router';
+import { headerLinks } from '@/utils/constants';
+import { useContactStore } from '@/stores/contact';
 
 const router = useRouter();
-
-defineProps<{
-  headerLinks: HeaderLink[];
-  contactInfoLinks: ContactInfoLink[];
-}>();
+const contactStore = useContactStore();
 </script>
 
 <template>
@@ -18,18 +16,18 @@ defineProps<{
       <ion-col>
         <ion-row class="ion-margin-bottom">
           <ion-col>
-            <ion-item v-for="({ name, title }, idx) of headerLinks" :key="idx">
-              <hyper-link-text
-                :route="{ name }"
-                :active="router.currentRoute.value.name == name"
-                :label="title"
-              ></hyper-link-text>
-            </ion-item>
+            <router-link v-for="({ name, title }, idx) of headerLinks" :to="{ name }" :key="idx">
+              <ion-item>
+                <ion-label :class="{ active: router.currentRoute.value.name == name }">{{
+                  title
+                }}</ion-label>
+              </ion-item>
+            </router-link>
           </ion-col>
         </ion-row>
 
         <ion-row
-          v-for="({ icon, title, href, label }, idx) of contactInfoLinks"
+          v-for="({ icon, title, href, label }, idx) of contactStore.contactInfoLinks"
           :key="idx"
           class="ion-padding-start"
         >
@@ -54,3 +52,10 @@ defineProps<{
     </ion-row>
   </ion-menu>
 </template>
+
+<style scoped>
+.active {
+  color: var(--ion-color-secondary);
+  font-weight: bold;
+}
+</style>

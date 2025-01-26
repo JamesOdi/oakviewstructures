@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { IonRow, IonCol } from '@ionic/vue';
+import MyContent from './MyContent.vue';
 
 defineProps({
   title: { type: String, required: true },
   subtitle: { type: String, required: false },
-  imageLocation: { type: String, required: true },
+  largeScreenImageLocation: { type: String, required: true },
+  smallScreenImageLocation: { type: String },
 });
 </script>
 
@@ -19,15 +21,12 @@ defineProps({
         position: relative;
       "
     >
-      <div style="width: 100%; height: 500px; position: relative"></div>
+      <div class="header-image" :style="`background-image: url(${largeScreenImageLocation})`"></div>
 
-      <ion-row
+      <my-content
         style="
           position: absolute;
-          top: 0;
-          left: 0;
           color: white;
-          width: 100%;
           height: 100%;
           text-align: center;
           display: flex;
@@ -35,19 +34,21 @@ defineProps({
           align-items: center;
         "
       >
-        <ion-col>
-          <ion-row>
-            <ion-col>
-              <h1 class="title">{{ title }}</h1>
-            </ion-col>
-          </ion-row>
-          <ion-row v-if="subtitle">
-            <ion-col>
-              <h1 class="subtitle">{{ subtitle }}</h1>
-            </ion-col>
-          </ion-row>
-        </ion-col>
-      </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-row>
+              <ion-col>
+                <h1 class="title">{{ title }}</h1>
+              </ion-col>
+            </ion-row>
+            <ion-row v-if="subtitle">
+              <ion-col size="">
+                <h1 class="subtitle" style="color: var(--vt-c-black-soft)">{{ subtitle }}</h1>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </my-content>
     </ion-col>
   </ion-row>
 </template>
@@ -58,7 +59,6 @@ defineProps({
   font-weight: 400;
   font-size: 80px;
   font-optical-sizing: auto;
-  font-style: normal;
   color: var(--ion-color-primary);
 }
 
@@ -71,13 +71,29 @@ defineProps({
   color: var(--ion-color-secondary);
 }
 
+.header-image {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.5);
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
 @media (max-width: 1024px) {
   .title {
-    font-size: 50px;
+    font-size: calc(10vw);
   }
 
   .subtitle {
-    font-size: 20px;
+    font-size: clamp(5px, 15px, 60px);
+  }
+
+  .header-image {
+    height: auto; /* Auto height */
+    aspect-ratio: 16 / 9; /* Adjust aspect ratio as needed */
+    background-size: cover;
+    background-position: center;
   }
 }
 </style>

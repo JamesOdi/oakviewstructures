@@ -4,6 +4,8 @@ import MyContent from '@/components/MyContent.vue';
 import { IonRow, IonCol, IonLabel, IonCard, IonCardContent } from '@ionic/vue';
 import MySection from '@/components/MySection.vue';
 import { useServiceStore } from '@/stores/service';
+import { computed } from 'vue';
+import { companyName } from '@/utils/constants';
 
 const serviceStore = useServiceStore();
 </script>
@@ -20,14 +22,14 @@ const serviceStore = useServiceStore();
           <ion-col size="12" size-md="6">
             <my-section
               title="OUR SERVICES"
-              subtitle="OAKVIEW POWERS MILLIONS OF BUSINESSES WORLDWIDE"
+              :subtitle="`${companyName} POWERS MILLIONS OF BUSINESSES WORLDWIDE`"
             >
               <ion-row>
                 <ion-col class="ion-no-padding">
                   <ion-label
-                    >At OakView, we combine innovation, craftsmanship, and sustainability to deliver
-                    exceptional projects tailored to your needs. Our expertise spans a variety of
-                    services to bring your vision to life.</ion-label
+                    >At {{ companyName }}, we combine innovation, craftsmanship, and sustainability
+                    to deliver exceptional projects tailored to your needs. Our expertise spans a
+                    variety of services to bring your vision to life.</ion-label
                   >
                 </ion-col>
               </ion-row>
@@ -85,20 +87,21 @@ const serviceStore = useServiceStore();
         </ion-col>
       </ion-row>
 
-      <my-section title="WHY CHOOSE OAKVIEW?" subtitle="" class="ion-margin-top ion-padding-top">
+      <my-section
+        :title="`WHY CHOOSE ${companyName.toUpperCase()}?`"
+        subtitle=""
+        class="ion-margin-top ion-padding-top"
+      >
         <ul>
-          <li
-            v-for="(reason, reasonIdx) of serviceStore.reasonsForChoosingOakView"
-            :key="reasonIdx"
-          >
+          <li v-for="(reason, reasonIdx) of serviceStore.reasonsForChoosingUs" :key="reasonIdx">
             {{ reason }}
           </li>
         </ul>
         <ion-row class="ion-margin-top">
           <ion-col>
             <ion-label style="font-weight: bold"
-              >Contact us today to discuss your next project and experience the OakView
-              difference.</ion-label
+              >Contact us today to discuss your next project and experience the
+              {{ companyName }} difference.</ion-label
             >
           </ion-col>
         </ion-row>

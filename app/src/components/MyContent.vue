@@ -16,7 +16,6 @@ const props = defineProps({
   colSize: {
     type: String,
     default: 'auto',
-    required: false,
   },
 });
 

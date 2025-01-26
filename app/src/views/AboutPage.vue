@@ -4,6 +4,8 @@ import { IonRow, IonCol, IonLabel } from '@ionic/vue';
 import MySection from '@/components/MySection.vue';
 import MyContent from '@/components/MyContent.vue';
 import { useOfferingStore } from '@/stores/offering';
+import { computed } from 'vue';
+import { companyName } from '@/utils/constants';
 
 const offeringStore = useOfferingStore();
 </script>
@@ -18,20 +20,23 @@ const offeringStore = useOfferingStore();
       <my-content class="ion-margin-vertical ion-padding-vertical">
         <ion-row class="ion-margin-vertical">
           <ion-col size="12" size-md="6">
-            <my-section title="ABOUT US" subtitle="OAKVIEW POWERS MILLIONS OF BUSINESSES WORLDWIDE">
+            <my-section
+              title="ABOUT US"
+              :subtitle="`${companyName.toUpperCase()} POWERS MILLIONS OF BUSINESSES WORLDWIDE`"
+            >
               <ion-row>
                 <ion-col class="ion-no-padding">
                   <ion-label
-                    >At OakView, we believe every project tells a story—a story of vision,
+                    >At {{ companyName }}, we believe every project tells a story—a story of vision,
                     creativity, and sustainable impact. Founded with a passion for transforming the
                     living and working experience in Africa, we specialize in delivering exceptional
                     design and construction services with a distinctive touch: the innovative use of
                     timber.<br />
                     <br />At the foundation of our work and the core of our spirit lies
-                    Excellence—the bedrock upon which every idea at OakView is built and every dream
-                    takes shape. Like the roots of a mighty oak tree, our commitment to excellence
-                    anchors everything we do, ensuring strength, beauty, and lasting impact in every
-                    project.</ion-label
+                    Excellence—the bedrock upon which every idea at {{ companyName }} is built and
+                    every dream takes shape. Like the roots of a mighty oak tree, our commitment to
+                    excellence anchors everything we do, ensuring strength, beauty, and lasting
+                    impact in every project.</ion-label
                   >
                 </ion-col>
               </ion-row>
@@ -54,9 +59,9 @@ const offeringStore = useOfferingStore();
             style="text-align: center"
           >
             <ion-label>
-              We help people achieve independence by making it easier to start, run, and grow a
-              business. We believe the future of commerce has more voices, not fewer, so we're
-              reducing the barriers to business ownership to make commerce better for everyone.
+              At {{ companyName }}, our success is built on the strength of our people. Each team
+              member brings unique expertise, creativity, and dedication, working together to bring
+              your vision to life.
             </ion-label>
           </my-section>
         </ion-col>
