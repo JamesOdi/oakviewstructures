@@ -17,12 +17,12 @@ const serviceStore = useServiceStore();
       class="center-children ion-padding"
       style="background-color: var(--ion-color-primary); color: white"
     >
-      <my-content>
-        <ion-row class="ion-margin-top center-horizontal">
+      <my-content class="ion-margin-vertical ion-padding-vertical">
+        <ion-row class="ion-margin-top">
           <ion-col size="12" size-md="6">
             <my-section
               title="OUR SERVICES"
-              :subtitle="`${companyName} POWERS MILLIONS OF BUSINESSES WORLDWIDE`"
+              subtitle="Exceptional Design. Expert Construction. Elegant Finishing"
             >
               <ion-row>
                 <ion-col class="ion-no-padding">

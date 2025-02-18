@@ -20,9 +20,12 @@ import { headerLinks } from '@/utils/constants';
 import AppLogoImage from '@/components/AppLogoImage.vue';
 import { useContactStore } from '@/stores/contact';
 import MyContent from '@/components/MyContent.vue';
+import { computed } from 'vue';
 
 const contactStore = useContactStore();
 const router = useRouter();
+
+const designedBy = computed(() => import.meta.env.VITE_APP_DESIGNED_BY);
 </script>
 
 <template>
@@ -101,7 +104,8 @@ const router = useRouter();
           <ion-row class="toolbar-main" style="display: flex">
             <ion-col>
               <ion-text style="color: white">
-                &copy; 2025 {{ companyName }}. Designed by James Odike
+                &copy; 2025 {{ companyName }}. Designed by
+                {{ designedBy }}
               </ion-text>
             </ion-col>
             <ion-col v-for="{ name, title } of headerLinks" size="auto" class="toolbar-link">

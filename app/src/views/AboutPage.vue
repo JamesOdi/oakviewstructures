@@ -18,11 +18,11 @@ const offeringStore = useOfferingStore();
       style="background-color: var(--ion-color-primary); color: white"
     >
       <my-content class="ion-margin-vertical ion-padding-vertical">
-        <ion-row class="ion-margin-vertical">
+        <ion-row class="ion-margin-top">
           <ion-col size="12" size-md="6">
             <my-section
               title="ABOUT US"
-              :subtitle="`${companyName.toUpperCase()} POWERS MILLIONS OF BUSINESSES WORLDWIDE`"
+              :subtitle="`Building Dreams, Shaping Communities - The ${companyName} Story`"
             >
               <ion-row>
                 <ion-col class="ion-no-padding">

@@ -20,7 +20,7 @@ export const useServiceStore = defineStore('service', () => {
         'From groundbreaking to completion, our team ensures your project is delivered on time, within budget, and to the highest quality standards.',
       bulletPoints: [
         'Residential and commercial construction',
-        'Turnkey project execution',
+        'Project execution',
         'Timely progress tracking and updates',
       ],
       image: '/assets/construction_and_project.jpeg',
